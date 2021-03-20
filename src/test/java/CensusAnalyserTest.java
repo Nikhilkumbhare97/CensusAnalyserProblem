@@ -8,6 +8,7 @@ public class CensusAnalyserTest {
     public static final String INDIAN_STATE_CENSUS_FILE = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaStateCensusData.csv";
     public static final String WRONG_CSV_FILE = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaState.csv";
     public static final String WRONG_CSV_FILE_TYPE = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaStateCensusData.txt";
+    public static final String WRONG_CSV_FILE_DELIMETER = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaStateCensusDataDelimiter.csv";
 
 
     @Test
@@ -38,6 +39,16 @@ public class CensusAnalyserTest {
         } catch (CensusAnalyserException e) {
             System.out.println(e.type);
             Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG_FILE_TYPE,e.type);
+        }
+    }
+
+    @Test
+    public void givenIndiaCensusData_WithWrongFileDelimeter_ShouldThrowException() {
+        try {
+            CensusAnalyser.loadCensusData(WRONG_CSV_FILE_DELIMETER);
+        } catch (CensusAnalyserException e) {
+            System.out.println(e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG_FILE_DELIMETER,e.type);
         }
     }
 }
