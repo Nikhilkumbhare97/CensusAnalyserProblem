@@ -1,0 +1,50 @@
+SrNo     StateName TIN      StateCode
+         Andaman
+         and Nicobar
+        1Islands           35AN
+         Andhra
+        2Pradesh           28AP
+         Andhra
+        3Pradesh New       37AD
+         Arunachal
+        4Pradesh           12AR
+        5Assam             18AS
+        6Bihar             10BH
+        7Chandigarh 04       CH
+        8Chattisgarh       22CT
+         Dadra and
+        9Nagar Haveli      26DN
+         Daman and
+       10Diu               25DD
+       11Delhi        07     DL
+       12Goa               30GA
+       13Gujarat           24GJ
+       14Haryana      06     HR
+         Himachal
+       15Pradesh      02    HP
+         Jammu and
+       16Kashmir      01     JK
+       17Jharkhand         20JH
+       18Karnataka         29KA
+       19Kerala            32KL
+         Lakshadweep
+       20Islands           31LD
+         Madhya
+       21Pradesh           23MP
+       22Maharashtra       27MH
+       23Manipur           14MN
+       24Meghalaya         17ME
+       25Mizoram           15MI
+       26Nagaland          13NL
+       27Odisha            21OR
+       28Pondicherry       34PY
+       29Punjab       03     PB
+       30Rajasthan    08     RJ
+       31Sikkim            11SK
+       32Tamil Nadu        33TN
+       33Telangana         36TS
+       34Tripura           16TR
+       35Uttar Pradesh09     UP
+       36Uttarakhand 05      UT
+       37West Bengal       19WB
+
