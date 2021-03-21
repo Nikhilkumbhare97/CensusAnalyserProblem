@@ -33,6 +33,8 @@ public class CensusAnalyser {
     }
 
     public static int loadCodeData(String filePathCSV) throws CensusAnalyserException {
+        if (!filePathCSV.contains(".csv"))
+            throw new CensusAnalyserException("This is invalid file type", CensusAnalyserException.ExceptionType.WRONG_FILE_TYPE);
         try (Reader reader = Files.newBufferedReader(Paths.get(filePathCSV))) {
             CsvToBean<IndiaStateCodeCSV> csvToBean = new CsvToBeanBuilder<IndiaStateCodeCSV>(reader)
                     .withType(IndiaStateCodeCSV.class)
@@ -44,6 +46,9 @@ public class CensusAnalyser {
         } catch (IOException exception) {
             throw new CensusAnalyserException(exception.getMessage(), CensusAnalyserException.ExceptionType.CODE_FILE_PROBLEM);
         } catch (RuntimeException exception) {
+            if (exception.getMessage().contains("header")) {
+                throw new CensusAnalyserException(exception.getMessage(), CensusAnalyserException.ExceptionType.WRONG_FILE_HEADER);
+            }
             throw new CensusAnalyserException(exception.getMessage(), CensusAnalyserException.ExceptionType.WRONG_FILE_DELIMITER);
         }
     }

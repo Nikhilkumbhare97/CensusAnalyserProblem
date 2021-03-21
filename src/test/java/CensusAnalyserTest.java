@@ -105,4 +105,14 @@ public class CensusAnalyserTest {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG_FILE_DELIMITER, e.type);
         }
     }
+
+    @Test
+    public void givenIndiaStateCodeData_WithWrongFileHeader_ShouldThrowException() {
+        try {
+            CensusAnalyser.loadCodeData(INDIAN_STATE_CENSUS_FILE);
+        } catch (CensusAnalyserException e) {
+            System.out.println(e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG_FILE_HEADER, e.type);
+        }
+    }
 }
