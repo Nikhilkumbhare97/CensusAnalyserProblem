@@ -28,7 +28,7 @@ public class CensusAnalyser {
             if (exception.getMessage().contains("header")) {
                 throw new CensusAnalyserException(exception.getMessage(), CensusAnalyserException.ExceptionType.WRONG_FILE_HEADER);
             }
-            throw new CensusAnalyserException(exception.getMessage(), CensusAnalyserException.ExceptionType.WRONG_FILE_DELIMETER);
+            throw new CensusAnalyserException(exception.getMessage(), CensusAnalyserException.ExceptionType.WRONG_FILE_DELIMITER);
         }
     }
 
@@ -42,7 +42,7 @@ public class CensusAnalyser {
             Iterable<IndiaStateCodeCSV> censusCSVIterable = () -> indiaStateCodeCSVIterator;
             return (int) StreamSupport.stream(censusCSVIterable.spliterator(), false).count();
         } catch (IOException exception) {
-            throw new CensusAnalyserException(exception.getMessage(), CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
+            throw new CensusAnalyserException(exception.getMessage(), CensusAnalyserException.ExceptionType.CODE_FILE_PROBLEM);
         }
     }
 }

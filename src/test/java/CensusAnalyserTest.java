@@ -6,11 +6,11 @@ import org.junit.Test;
 public class CensusAnalyserTest {
 
     public static final String INDIAN_STATE_CENSUS_FILE = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaStateCensusData.csv";
-    public static final String WRONG_CSV_FILE = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaState.csv";
-    public static final String WRONG_CSV_FILE_TYPE = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaStateCensusData.txt";
-    public static final String WRONG_CSV_FILE_DELIMETER = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaStateCensusDataDelimiter.csv";
+    public static final String CENSUS_WRONG_CSV_FILE = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaState.csv";
+    public static final String CENSUS_WRONG_CSV_FILE_TYPE = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaStateCensusData.txt";
+    public static final String CENSUS_WRONG_CSV_FILE_DELIMITER = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaStateCensusDataDelimiter.csv";
     public static final String INDIAN_STATE_CODE_FILE = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaStateCode.csv";
-
+    public static final String CODE_WRONG_CSV_FILE = "C:\\Users\\nikhi\\IdeaProjects\\CensusAnalyserProblem\\src\\main\\resources\\IndiaState.csv";
 
     @Test
     public void givenIndianStateCensusCSVFile_ReturnsCorrectRecords() {
@@ -26,7 +26,7 @@ public class CensusAnalyserTest {
     @Test
     public void givenIndiaStateCensusData_WithWrongFile_ShouldThrowException() {
         try {
-            CensusAnalyser.loadCensusData(WRONG_CSV_FILE);
+            CensusAnalyser.loadCensusData(CENSUS_WRONG_CSV_FILE);
         } catch (CensusAnalyserException e) {
             System.out.println(e.type);
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
@@ -36,7 +36,7 @@ public class CensusAnalyserTest {
     @Test
     public void givenIndiaCensusData_WithWrongFileType_ShouldThrowException() {
         try {
-            CensusAnalyser.loadCensusData(WRONG_CSV_FILE_TYPE);
+            CensusAnalyser.loadCensusData(CENSUS_WRONG_CSV_FILE_TYPE);
         } catch (CensusAnalyserException e) {
             System.out.println(e.type);
             Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG_FILE_TYPE, e.type);
@@ -44,12 +44,12 @@ public class CensusAnalyserTest {
     }
 
     @Test
-    public void givenIndiaCensusData_WithWrongFileDelimeter_ShouldThrowException() {
+    public void givenIndiaCensusData_WithWrongFileDelimiter_ShouldThrowException() {
         try {
-            CensusAnalyser.loadCensusData(WRONG_CSV_FILE_DELIMETER);
+            CensusAnalyser.loadCensusData(CENSUS_WRONG_CSV_FILE_DELIMITER);
         } catch (CensusAnalyserException e) {
             System.out.println(e.type);
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG_FILE_DELIMETER, e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG_FILE_DELIMITER, e.type);
         }
     }
 
@@ -71,6 +71,16 @@ public class CensusAnalyserTest {
             Assert.assertEquals(37, count);
         } catch (CensusAnalyserException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenIndiaStateCodeData_WithWrongFile_ShouldThrowException() {
+        try {
+            CensusAnalyser.loadCodeData(CODE_WRONG_CSV_FILE);
+        } catch (CensusAnalyserException e) {
+            System.out.println(e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CODE_FILE_PROBLEM, e.type);
         }
     }
 }
