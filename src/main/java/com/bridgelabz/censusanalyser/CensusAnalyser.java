@@ -35,15 +35,16 @@ public class CensusAnalyser {
     public static int loadCodeData(String filePathCSV) throws CensusAnalyserException {
         try (Reader reader = Files.newBufferedReader(Paths.get(filePathCSV))) {
             CsvToBean<IndiaStateCodeCSV> csvToBean = new CsvToBeanBuilder<IndiaStateCodeCSV>(reader)
-                        .withType(IndiaStateCodeCSV.class)
-                        .withIgnoreLeadingWhiteSpace(true)
-                        .build();
+                    .withType(IndiaStateCodeCSV.class)
+                    .withIgnoreLeadingWhiteSpace(true)
+                    .build();
             Iterator<IndiaStateCodeCSV> indiaStateCodeCSVIterator = csvToBean.iterator();
             Iterable<IndiaStateCodeCSV> censusCSVIterable = () -> indiaStateCodeCSVIterator;
             return (int) StreamSupport.stream(censusCSVIterable.spliterator(), false).count();
         } catch (IOException exception) {
             throw new CensusAnalyserException(exception.getMessage(), CensusAnalyserException.ExceptionType.CODE_FILE_PROBLEM);
+        } catch (RuntimeException exception) {
+            throw new CensusAnalyserException(exception.getMessage(), CensusAnalyserException.ExceptionType.WRONG_FILE_DELIMITER);
         }
     }
 }
-
